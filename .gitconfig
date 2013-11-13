@@ -1,0 +1,61 @@
+[user]
+	name = Ingmar Pörner
+	email = ipoerner@gmail.com
+[color]
+	ui = always
+	diff = always
+[color "diff"]
+[diff]
+	renamelimit = 0
+[merge]
+  renamelimit = 0
+#[difftool]
+#	prompt = false
+[log]
+	decorate = true
+[alias]
+	# real simple aliases
+
+	br = branch
+	brv = branch -vva
+	ci = commit
+	co = checkout	
+	di = diff
+	dic = diff --cached
+	distclean = clean -fdx
+	fixup = commit --amend -C HEAD
+	last = log -1 HEAD
+	pi = cherry-pick
+	revs = log --pretty=format:"%C(yellow)%h%Creset"
+	rmd = !git rm `git ls-files --deleted`
+	showfiles = show --pretty="format:" --name-only
+	st = status
+	unstage = reset HEAD --
+	vis = !gitk &
+
+	# more complex aliases
+
+	# show commits that are only in this branch
+	brlog = "!sh -c 'git log --no-merges \"$1\"..$(git rev-parse --abbrev-ref HEAD)' -"
+	# show amount of lines contributed per file
+	contrib = "!sh -c 'git blame --line-porcelain -- \"$1\" | sed -n \"s/^author //p\" | sort | uniq -c | sort -rn' -"
+	# count number of commits on a given file
+	count = "!sh -c 'echo $(( $(git log --pretty=format:%h -- \"$1\" | wc -l) + 1 ))' -"
+	# find a specific string in all commits
+	find = "!sh -c 'git log -S\"$1\" --source' -"
+	# pretty-formatted log command
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+	# another pretty-formatted log command
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	# pretty-formatted list of tags
+	tags = log --date-order --tags --simplify-by-decoration --pretty=format:'* %Cred%h%Creset -%d %Cgreen%ai%Creset %C(cyan)(%ar)%Creset'
+	# show files that were edited by a given author
+	what = "!sh -c 'git log --no-merges --stat --author=\"$1\" --name-only --pretty=format:"" | sort -u' -"
+	# show files that contain a given string
+	where = "!sh -c 'git grep --no-color \"$1\" | grep -v \"Binary file .* matches\" | sed \"s/:.*//p\" | sort | uniq' -"
+	# count number of commits per author on a given file
+	who = "!sh -c 'git log --no-merges --pretty=format:\"%an\" -- \"$1\" | sort | uniq -c | sort -rn' -"
+[include]
+  	path = .gitconfig.local
+[push]
+	default = current
