@@ -22,13 +22,11 @@
 	co = checkout	
 	di = diff
 	dic = diff --cached
-	distclean = clean -fdx
 	fixup = commit --amend -C HEAD
 	last = log -1 HEAD
 	pi = cherry-pick
 	revs = log --pretty=format:"%C(yellow)%h%Creset"
 	rmd = !git rm `git ls-files --deleted`
-	showfiles = show --pretty="format:" --name-only
 	st = status
 	unstage = reset HEAD --
 	vis = !gitk &
