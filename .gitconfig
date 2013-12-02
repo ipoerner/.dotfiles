@@ -19,10 +19,10 @@
 	br = branch
 	brv = branch -vva
 	ci = commit
-	co = checkout	
+	co = checkout
 	di = diff
 	dic = diff --cached
-	fixup = commit --amend -C HEAD
+	fixup = commit --amend
 	last = log -1 HEAD
 	pi = cherry-pick
 	revs = log --pretty=format:"%C(yellow)%h%Creset"
