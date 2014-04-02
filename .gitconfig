@@ -40,7 +40,7 @@
 	# show amount of lines contributed per file
 	contrib = "!sh -c 'git blame --line-porcelain -- \"$1\" | sed -n \"s/^author //p\" | sort | uniq -c | sort -rn' -"
 	# count number of commits on a given file
-	count = "!sh -c 'echo $(( $(git log --pretty=format:%h -- \"$1\" | wc -l) + 1 ))' -"
+	count = "!sh -c 'echo $(( $(git log --pretty=format:%h --follow -- \"$1\" | wc -l) + 1 ))' -"
 	# find a specific string in all commits
 	find = "!sh -c 'git log -S\"$1\" --source' -"
 	# pretty-formatted log command
@@ -54,7 +54,7 @@
 	# show files that contain a given string
 	where = "!sh -c 'git grep --no-color \"$1\" | grep -v \"Binary file .* matches\" | sed \"s/:.*//p\" | sort | uniq' -"
 	# count number of commits per author on a given file
-	who = "!sh -c 'git log --no-merges --pretty=format:\"%an\" -- \"$1\" | sort | uniq -c | sort -rn' -"
+	who = "!sh -c 'git log --no-merges --pretty=format:\"%an\" --follow -- \"$1\" | sort | uniq -c | sort -rn' -"
 [include]
   	path = .gitconfig.local
 [push]
