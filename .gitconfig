@@ -8,13 +8,14 @@
 [diff]
 	renamelimit = 0
 [merge]
-  renamelimit = 0
+    ff = false
+    renamelimit = 0
 #[difftool]
 #	prompt = false
 [log]
 	decorate = true
 [alias]
-	# real simple aliases
+	# simple aliases
 
 	br = branch
 	brv = branch -vva
@@ -59,3 +60,6 @@
   	path = .gitconfig.local
 [push]
 	default = current
+[rerere]
+	enabled = true
+	autoupdate = true
