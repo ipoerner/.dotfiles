@@ -50,6 +50,8 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     # finds the oldest ancestor of two branches
     oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
+    # set private email locally in case global email is work address
+    privprof = config user.email "ipoerner@gmail.com"
     # pretty-formatted list of tags
     tags = log --date-order --tags --simplify-by-decoration --pretty=format:'* %Cred%h%Creset -%d %Cgreen%ai%Creset %C(cyan)(%ar)%Creset'
     # show files that were edited by a given author
