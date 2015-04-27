@@ -48,6 +48,8 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
     # another pretty-formatted log command
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    # finds the oldest ancestor of two branches
+    oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
     # pretty-formatted list of tags
     tags = log --date-order --tags --simplify-by-decoration --pretty=format:'* %Cred%h%Creset -%d %Cgreen%ai%Creset %C(cyan)(%ar)%Creset'
     # show files that were edited by a given author
