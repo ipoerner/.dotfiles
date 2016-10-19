@@ -50,6 +50,8 @@
     lgb = "!sh -c 'CURRENT=$(git rev-parse --abbrev-ref HEAD); OTHER=$(git for-each-ref --format=\"%(refname)\" refs/heads/ | grep -v \"refs/heads/${CURRENT}\"); git log ${CURRENT} --not ${OTHER}'"
     # another pretty-formatted log command
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    # Finds newly added files
+    new-files = diff --name-only --diff-filter=A
     # finds the oldest ancestor of two branches
     oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
     # set private email locally in case global email is work address
@@ -58,6 +60,8 @@
     revision = !sh -c 'git rev-list HEAD | wc -l'
     # pretty-formatted list of tags
     tags = log --date-order --tags --simplify-by-decoration --pretty=format:'* %Cred%h%Creset -%d %Cgreen%ai%Creset %C(cyan)(%ar)%Creset'
+    # update timestamp on your last commit
+    touch = "!sh -c 'GIT_COMMITTER_DATE=\"`date -R`\" git commit --amend --date=\"`date -R`\"'"
     # show files that were edited by a given author
     what = "!sh -c 'git log --no-merges --stat --author=\"$1\" --name-only --pretty=format:"" | sort -u' -"
     # show files that contain a given string
