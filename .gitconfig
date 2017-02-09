@@ -66,6 +66,8 @@
     what = "!sh -c 'git log --no-merges --stat --author=\"$1\" --name-only --pretty=format:"" | sort -u' -"
     # show files that contain a given string
     where = "!sh -c 'git grep --no-color \"$1\" | grep -v \"Binary file .* matches\" | sed \"s/:.*//p\" | sort | uniq' -"
+    # check whitespaces
+    whitespaces = "!sh -c 'git diff-tree --check $(git hash-object -t tree /dev/null) HEAD' -"
     # count number of commits per author on a given file
     who = "!sh -c 'git log --no-merges --pretty=format:\"%an\" --follow -- \"$1\" | sort | uniq -c | sort -rn' -"
 [include]
